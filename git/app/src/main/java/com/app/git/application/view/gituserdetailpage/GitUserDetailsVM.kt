@@ -1,4 +1,4 @@
-package com.app.git.application.view.userdetailpage
+package com.app.git.application.view.gituserdetailpage
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
@@ -20,6 +20,7 @@ class GitUserDetailsVM @Inject constructor(
     init {
         savedStateHandle.get<GitUserUIModel>(Constants.USER)?.let {
             setEvent(GitUserDetailEvents.GetUser(it))
+            setEvent(GitUserDetailEvents.GetUserFollowers(it.login))
         }
     }
 
@@ -31,7 +32,6 @@ class GitUserDetailsVM @Inject constructor(
                         user = event.user
                     )
                 }
-                setEvent(GitUserDetailEvents.GetUserFollowers(event.user.login))
             }
             is GitUserDetailEvents.GetUserFollowers -> {
                 viewModelScope.launch {

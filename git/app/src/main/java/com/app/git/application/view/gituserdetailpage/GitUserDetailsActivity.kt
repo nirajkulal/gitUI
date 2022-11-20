@@ -1,4 +1,4 @@
-package com.app.git.application.view.userdetailpage
+package com.app.git.application.view.gituserdetailpage
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,7 +16,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.app.git.application.Constants.Companion.USER
 import com.app.git.application.view.GitUserUIModel
 import com.app.git.application.view.GitUsers
 import com.app.git.application.view.typography
@@ -44,15 +43,20 @@ fun GitUserDetailsPage(viewModel: GitUserDetailsVM) {
         Column {
             GitUserHeader(state.user)
             Divider(thickness = 1.dp)
-            state.followers?.let {
-                Text(
-                    modifier = Modifier.padding(32.dp),
-                    text = stringResource(id = com.app.git.R.string.followers),
-                    style = typography.subtitle2
-                )
-                GitUsers(it)
-            }
+            GitUserFollower(state.followers)
         }
+    }
+}
+
+@Composable
+fun GitUserFollower(followers: MutableList<GitUserUIModel>?) {
+    followers?.let {
+        Text(
+            modifier = Modifier.padding(32.dp),
+            text = stringResource(id = com.app.git.R.string.followers),
+            style = typography.subtitle2
+        )
+        GitUsers(it)
     }
 }
 

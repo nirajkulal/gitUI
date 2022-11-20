@@ -13,13 +13,6 @@ interface ApiService {
         @Header("Authorization") authorization: String = "", @Query("q") query: String
     ): Response<UsersResponse>
 
-
-    @GET("/users/{user}")
-    suspend fun gitUser(
-        @Header("Authorization") authorization: String = "", @Path("user") user: String
-    ): Response<User>
-
-
     @GET("/users/{user}/followers")
     suspend fun gitUserFollowers(
         @Header("Authorization") authorization: String = "", @Path("user") user: String

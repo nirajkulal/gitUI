@@ -18,7 +18,7 @@ import com.app.git.application.Constants
 import com.app.git.application.view.GitUserUIModel
 import com.app.git.application.view.GitUsers
 import com.app.git.application.view.typography
-import com.app.git.application.view.userdetailpage.GitUserDetailsActivity
+import com.app.git.application.view.gituserdetailpage.GitUserDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
